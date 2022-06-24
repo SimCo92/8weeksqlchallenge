@@ -1,0 +1,53 @@
+1. Questions
+
+What is the difference between a primary key and unique key?
+
+What are some ways to optimize a query?
+	-EXPLAIN(Postgres)
+	-Reduce amount of data to query with WHERE clauses
+	-Limit the amount of useful rows the database needs to query with a LIMIT clause.
+	-Create indexes
+
+What is normalization and what are the advantages of it?
+	Database normalization is a strategy to efficiently organize data in a database.
+	The goal is to reduce redundant data so that the same data is not stored across
+	multiple tables.Instead, data will be referenced with a primary key.
+
+CRUD operations
+	UNION will produce a table that has the data contained in two tables.
+	MINUS will produce a table that has data from the first table minus that of the second table.
+	INTERSECT will produce a table that has shared data between the two tables.
+
+Write a SQL query to get the third-highest salary of an employee from employee_table.
+	SELECT salary FROM employee_table ORDER BY salary DESC LIMIT 1 OFFSET 2;
+
+What is the difference between HAVING clause and a WHERE clause?
+	WHERE is used to filter rows before they are possibly grouped.
+	HAVING is used to filter out rows after they have been grouped.
+	HAVING functions very similar to WHERE but is used after some form of aggregation.
+	WHERE clauses should be preferred when possible as our query will be faster if we filter out data pre-aggregation than post, but some filters can only be done post-aggregation and so require the use of a WHERE clause.
+
+When would it be more appropriate to use a Materialized View over a View?
+
+List some advantages and disadvantages of a stored procedure.
+	Stored procedures are useful for SQL queries that are used repeatedly.
+	In practice, we can construct a stored procedure in lieu of keeping a list of repeatedly-used SQL queries.
+	This reduces room for error and standardizes a set of operations for reproducibility.
+	....
+
+What are the differences between OLTP (ex. MySQL) and OLAP (ex. data warehouse) databases?
+	OLTP databases are designed for fast queries with strong data integrity.
+	They are typically optimized for handling day-to-day business operations that involve real-time reads and writes.
+	In OLTP, the emphasis is on fast processing, because OLTP databases are read, written, and updated frequently.
+	If a transaction fails, built-in system logic ensures data integrity.
+	An OLTP system captures and maintains transaction data in a database.
+	Examples include banking and credit card activity or retail checkout scanning.
+	
+	OLAP databases are optimized for offline analytics and typically involve complex aggregations.
+	Compared to OLTP databases, they often have lower volumes of queries, contain more historical data, and involve significantly fewer edits.
+	Query failure in OLAP does not interrupt or delay transaction processing for customers, but it can delay or impact the accuracy of business intelligence insights.
+
+
+
+
+
