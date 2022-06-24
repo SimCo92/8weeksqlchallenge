@@ -10,6 +10,7 @@ services:
       POSTGRES_PASSWORD: 8weekschallenge
     volumes:
       - ${PWD}/postgres-data:/var/lib/postgresql/data
+      - ${PWD}:/var/lib/postgresql/repo
 
   adminer:
     image: adminer
