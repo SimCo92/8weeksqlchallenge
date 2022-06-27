@@ -46,15 +46,16 @@ limit
 
 -- 5. Which item was the most popular for each customer?
 select 
-  distinct customer_id, 
-  product_id, 
-  count(product_id) 
+  distinct on (customer_id) customer_id, 
+  product_id
 from 
   sales 
 group by 
   (customer_id, product_id) 
 order by 
-  customer_id;
+  customer_id,
+  count(product_id)
+desc;
 
 
 -- 6. Which item was purchased first by the customer after they became a member?
